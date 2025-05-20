@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bdd96e27-e357-4066-ba09-fed2f119c8c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/django_study.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dj_lesson/manage.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Victoria-Abramenko"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Victoria-Abramenko/dj_lesson.git",
+    "accountId": "0ee5c8a5-ff8a-4329-a85d-73e2c5a9bcb8"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2xGbnPjQ22UneFpKoSnQOgsWOC1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bdd96e27-e357-4066-ba09-fed2f119c8c2" name="Changes" comment="" />
+      <created>1747567524640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747567524640</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -4,27 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd96e27-e357-4066-ba09-fed2f119c8c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/django_study.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dj_lesson/manage.py" afterDir="false" />
+    <list default="true" id="bdd96e27-e357-4066-ba09-fed2f119c8c2" name="Changes" comment="study django #6">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dj_lesson/dj_lesson/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dj_lesson/dj_lesson/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dj_lesson/dj_lesson/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dj_lesson/lesson_1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dj_lesson/lesson_1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dj_lesson/lesson_1/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,18 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Victoria-Abramenko"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Victoria-Abramenko&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Victoria-Abramenko/dj_lesson.git",
-    "accountId": "0ee5c8a5-ff8a-4329-a85d-73e2c5a9bcb8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Victoria-Abramenko/dj_lesson.git&quot;,
+    &quot;accountId&quot;: &quot;0ee5c8a5-ff8a-4329-a85d-73e2c5a9bcb8&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -64,12 +49,39 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.dj_lesson.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/my_project/django_study/dj_lesson/manage.py&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="dj_lesson" type="PythonConfigurationType" factoryName="Python">
+      <module name="django_study" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13 (django_study)" />
+      <option name="WORKING_DIRECTORY" value="E:\my_project\django_study" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dj_lesson/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -86,6 +98,28 @@
       <option name="presentableId" value="Default" />
       <updated>1747567524640</updated>
     </task>
+    <task id="LOCAL-00001" summary="study django #4">
+      <option name="closed" value="true" />
+      <created>1747760225188</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747760225188</updated>
+    </task>
+    <task id="LOCAL-00002" summary="study django #6">
+      <option name="closed" value="true" />
+      <created>1747846208239</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747846208348</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="study django #4" />
+    <MESSAGE value="study django #6" />
+    <option name="LAST_COMMIT_MESSAGE" value="study django #6" />
   </component>
 </project>

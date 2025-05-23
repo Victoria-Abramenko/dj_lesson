@@ -1,5 +1,7 @@
-from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.urls import reverse
+
 
 def index(request):
     return HttpResponse('Отображение стартовой страницы домену')
@@ -21,7 +23,15 @@ def other_by_slug(request, other_slug):
 
 def other_archive(request, year):
     if year > 2023:
-        raise Http404()
+        # return redirect('/')
+        # return redirect('/', permanent=True)
+        # return redirect(index)
+        # return redirect('home_page')
+        # return redirect('other_slug_page','music')
+        ur = reverse('other', args=('music', ))
+        # return redirect(ur)
+        return HttpResponseRedirect(ur)
+
     return HttpResponse(f'<h1>Отображение страницы по запросу other </h1><p>архив: {year}</p>')
 
 def func_page_not_found(request, exception):

@@ -1,10 +1,17 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 
 def index(request):
-    return HttpResponse('Отображение стартовой страницы домену')
+    # index_page = render_to_string('lesson_temp/index.html')
+    # return HttpResponse(index_page)
+    return render(request, 'lesson_temp/index.html')
+
+
+def about(request):
+    return render(request, 'lesson_temp/about.html')
 
 
 def next_page(request):

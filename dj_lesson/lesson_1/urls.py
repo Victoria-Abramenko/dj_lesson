@@ -7,6 +7,7 @@ register_converter(converters.YearConverter, 'year4')
 
 urlpatterns = [
     path('', views.index, name='home_page'),
+    path('about', views.about, name='about'),
     path('lesson_1/', views.next_page, name='lesson_page'),
     path('other/<int:other_id>/', views.other_page, name='other_number_page'),
     path('other/<slug:other_slug>/', views.other_by_slug, name='other_slug_page'),

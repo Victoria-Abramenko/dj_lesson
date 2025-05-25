@@ -3,15 +3,29 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.template.loader import render_to_string
 
+menu = ['О сайте', 'Добавить статью', 'Обратная связь', 'Войти']
+
+class MyClass:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
 
 def index(request):
     # index_page = render_to_string('lesson_temp/index.html')
     # return HttpResponse(index_page)
-    return render(request, 'lesson_temp/index.html')
+    data = {'title': 'Главная страница сайта',
+            'menu': menu,
+            'float': 28.56,
+            'lst': [1, 2, 'abc', True],
+            'set': {1, 2, 3, 5},
+            'dict': {'key_1': 'value_1', 'key_2': 'value_2'},
+            'obj': MyClass(10, 20)}
+    return render(request, 'lesson_temp/index.html', context=data)
 
 
 def about(request):
-    return render(request, 'lesson_temp/about.html')
+    return render(request, 'lesson_temp/about.html', {'title': 'О сайте'})
 
 
 def next_page(request):

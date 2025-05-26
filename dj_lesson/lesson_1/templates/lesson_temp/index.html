@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    <title>{{ title|upper }}</title>
 </head>
 <body>
     <p>{{ menu.0 }}</p>
     <p>{{ menu.1 }}</p>
     <p>{{ menu.2 }}</p>
     <p>{{ menu.3 }}</p>
-    <h1>{{ title }}</h1>
-    <p>{{ float }}</p>
+    <h1>{{ title|capfirst }}</h1>
+    <p>{{ float|add:"50" }}</p>
     <p>{{ lst }}</p>
     <p>{{ set }}</p>
     <p>{{ dict.key_1 }}</p>
     <p>{{ obj.a }} {{ obj.b }}</p>
+    <p>{{ text|default:"Текст по умолчанию" }}</p>
+    <p>{{ menu|first }}</p>
+    <p>{{ menu|join:" | " }}</p>
+    <p>{{ "page django lesson"|slugify }}</p>
+    <p>{{ url }}</p>
 
 
 </body>

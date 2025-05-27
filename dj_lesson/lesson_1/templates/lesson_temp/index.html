@@ -5,22 +5,22 @@
     <title>{{ title|upper }}</title>
 </head>
 <body>
-    <p>{{ menu.0 }}</p>
-    <p>{{ menu.1 }}</p>
-    <p>{{ menu.2 }}</p>
-    <p>{{ menu.3 }}</p>
-    <h1>{{ title|capfirst }}</h1>
-    <p>{{ float|add:"50" }}</p>
-    <p>{{ lst }}</p>
-    <p>{{ set }}</p>
-    <p>{{ dict.key_1 }}</p>
-    <p>{{ obj.a }} {{ obj.b }}</p>
-    <p>{{ text|default:"Текст по умолчанию" }}</p>
-    <p>{{ menu|first }}</p>
     <p>{{ menu|join:" | " }}</p>
-    <p>{{ "page django lesson"|slugify }}</p>
-    <p>{{ url }}</p>
+    <h1>{{ title|capfirst }}</h1>
 
+    <ul>
+        {% for elem in posts %}
+        {% if elem.is_published == True %}
+        <li>
+            <h2>{{ elem.title }}</h2>
+            <p>{{ elem.content }}</p>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
 
 </body>
 </html>

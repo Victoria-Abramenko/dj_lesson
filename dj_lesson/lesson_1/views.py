@@ -31,7 +31,7 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'lesson_temp/about.html', {'title': 'О сайте'})
+    return render(request, 'lesson_temp/about.html', {'title': 'О сайте', 'menu': menu})
 
 
 

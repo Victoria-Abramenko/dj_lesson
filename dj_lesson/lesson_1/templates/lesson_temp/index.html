@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title|upper }}</title>
-</head>
-<body>
-    <ul>
-        <li>
-            <a href="{% url 'home_page' %}">Главная страница</a>
-        </li>
-        {% for item in menu %}
-        {% if not forloop.last %}<li>{% else %}<li class="last">{% endif %}<a href="{% url item.url_name %}">{{ item.title }}</a></li>
-        {% endfor %}
-    </ul>
+{% extends 'base.html' %}
 
+{% block content %}
     <h1>{{ title|capfirst }}</h1>
+
+    {% include 'lesson_temp/includes/nav.html' %}
+
 
     <ul>
         {% for elem in posts %}
@@ -22,7 +12,6 @@
         <li>
             <h2>{{ elem.title }}</h2>
             <p>{{ elem.content }}</p>
-<!--            <p><a href="post/#{{ elem.id }}">Читать пост</a></p>-->
             <p><a href="{% url 'post' elem.id %}">Читать пост</a></p>
             {% if not forloop.last %}
             <hr>
@@ -32,5 +21,6 @@
         {% endfor %}
     </ul>
 
-</body>
-</html>
+    {% include 'lesson_temp/includes/nav.html' %}
+
+{% endblock %}

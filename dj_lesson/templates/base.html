@@ -1,20 +1,65 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{ title|upper }}</title>
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'lesson_static/css/styles.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="{% static 'lesson_static/img/main.ico' %}" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="{% url 'home_page' %}">Главная страница</a>
-        </li>
-        {% for item in menu %}
-        {% if not forloop.last %}<li>{% else %}<li class="last">{% endif %}<a href="{% url item.url_name %}">{{ item.title }}</a></li>
-        {% endfor %}
-    </ul>
-{% block content %} {% endblock %}
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="logo"><a href="{% url 'home_page' %}"><div class="logo"></div></a></li>
+{% for m in menu %}
+	{% if not forloop.last %}<li>{% else %}<li class="last">{% endif %}
+		<a href="{% url m.url_name %}">{{m.title}}</a></li>
+{% endfor %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
 
 
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
+		<li class="selected">Все категории</li>
+		<li><a href="#">Актрисы</a></li>
+		<li><a href="#">Певицы</a></li>
+		<li><a href="#">Спортсменки</a></li>
+		<li class="share">
+		<p>Наш канал</p>
+		<a class="share-yt" href="https://www.youtube.com/" target="_blank" rel="nofollow"></a>
+		</li>
+	</ul>
+</td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- Блок контента -->
+	<div class="content-text">
+{% block content %}
+{% endblock %}
+	</div>
+<!-- Конец блока контента -->
+
+</td></tr></table>
+</td></tr>
+<!-- Footer -->
+<tr><td valign=top>
+	<div id="footer">
+		<p>учебный шаблон</p>
+	</div>
+</td></tr></table>
+<!-- Конец footer'а и страницы -->
 </body>
 </html>

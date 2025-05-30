@@ -1,26 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ title|capfirst }}</h1>
+<ul class="list-articles">
+	{% for p in posts %}
+	{% if p.is_published %}
+			<li><h2>{{p.title}}</h2>
+    {% autoescape off %}
+	{{ p.content|linebreaks|truncatewords:20 }}
+    {% endautoescape %}
 
-    {% include 'lesson_temp/includes/nav.html' %}
-
-
-    <ul>
-        {% for elem in posts %}
-        {% if elem.is_published == True %}
-        <li>
-            <h2>{{ elem.title }}</h2>
-            <p>{{ elem.content }}</p>
-            <p><a href="{% url 'post' elem.id %}">Читать пост</a></p>
-            {% if not forloop.last %}
-            <hr>
-            {% endif %}
-        </li>
-        {% endif %}
-        {% endfor %}
-    </ul>
-
-    {% include 'lesson_temp/includes/nav.html' %}
-
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{% url 'post' p.id %}">Читать пост</a></p>
+			</li>
+	{% endif %}
+	{% endfor %}
+</ul>
 {% endblock %}

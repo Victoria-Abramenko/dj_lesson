@@ -22,6 +22,13 @@ data_db = [
 ]
 
 
+cats_db = [
+    {'id': 1, 'name': 'Актрисы'},
+    {'id': 2, 'name': 'Певицы'},
+    {'id': 3, 'name': 'Спортсменки'}
+]
+
+
 
 def index(request):
     # index_page = render_to_string('lesson_temp/index.html')
@@ -29,7 +36,8 @@ def index(request):
     data = {'title': 'Главная страница сайта',
             'text': '',
             'menu': menu,
-            'posts': data_db}
+            'posts': data_db,
+            'cat_selected': 0}
     return render(request, 'lesson_temp/index.html', context=data)
 
 
@@ -52,6 +60,15 @@ def contact(request):
 
 def login(request):
     return HttpResponse(f"Авторизация")
+
+
+def show_category(request, cat_id):
+    data = {'title': 'Отображение по рубрикам',
+            'text': '',
+            'menu': menu,
+            'posts': data_db,
+            'cat_selected': cat_id}
+    return render(request, 'lesson_temp/index.html', context=data)
 
 
 def func_page_not_found(request, exception):

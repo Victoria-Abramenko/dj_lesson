@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
+
+from .models import LessonForDB
 
 menu = [
     {'title': 'О сайте', 'url_name': 'about'},
@@ -31,12 +33,11 @@ cats_db = [
 
 
 def index(request):
-    # index_page = render_to_string('lesson_temp/index.html')
-    # return HttpResponse(index_page)
+    posts = LessonForDB.objects.filter(is_published=1)
     data = {'title': 'Главная страница сайта',
             'text': '',
             'menu': menu,
-            'posts': data_db,
+            'posts': posts,
             'cat_selected': 0}
     return render(request, 'lesson_temp/index.html', context=data)
 
@@ -46,8 +47,16 @@ def about(request):
 
 
 
-def show_post(request, post_id):
-    return HttpResponse(f"Отображение статьи с id = {post_id}")
+def show_post(request, post_slug):
+    post = get_object_or_404(LessonForDB, slug=post_slug)
+    data = {
+        'title': post.title,
+        'menu': menu,
+        'post': post,
+        'cat_selected': 1,
+    }
+
+    return render(request, 'lesson_temp/post.html', data)
 
 
 def add_page(request):

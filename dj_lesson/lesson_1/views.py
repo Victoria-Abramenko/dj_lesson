@@ -33,7 +33,7 @@ cats_db = [
 
 
 def index(request):
-    posts = LessonForDB.objects.filter(is_published=1)
+    posts = LessonForDB.published.all()
     data = {'title': 'Главная страница сайта',
             'text': '',
             'menu': menu,

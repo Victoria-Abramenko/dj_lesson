@@ -28,19 +28,16 @@
 
 <table class="table-content" border=0 cellpadding="0" cellspacing="0">
 <tr>
-<!-- Sidebar слева -->
+
 	<td valign="top" class="left-chapters">
 	<ul id="leftchapters">
-<!--		# {% get_categories as categories %}-->
+
 		{% if cat_selected == 0 or cat_selected is None%}
 		<li class="selected">Все категории</li>
 		{% else %}
 		<li><a href="{% url 'home_page' %}">Все категории</a></li>
 		{% endif %}
 
-<!--		# {% for cat in categories %}-->
-<!--		# <li><a href="{% url 'category' cat.id %}">{{ cat.name }}</a></li>-->
-<!--		# {% endfor %}-->
 		{% show_categories cat_selected %}
 
 		<li class="share">
@@ -49,26 +46,26 @@
 		</li>
 	</ul>
 </td>
-<!-- Конец Sidebar'а -->
+
 <td valign="top" class="content">
 	{% block breadcrumbs %}
 	{% endblock %}
 
-<!-- Блок контента -->
+
 	<div class="content-text">
 {% block content %}
 {% endblock %}
 	</div>
-<!-- Конец блока контента -->
+
 
 </td></tr></table>
 </td></tr>
-<!-- Footer -->
+
 <tr><td valign=top>
 	<div id="footer">
 		<p>учебный шаблон</p>
 	</div>
 </td></tr></table>
-<!-- Конец footer'а и страницы -->
+
 </body>
 </html>

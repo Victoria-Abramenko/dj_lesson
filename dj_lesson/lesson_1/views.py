@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
 
-from .models import LessonForDB, Category
+from .models import LessonForDB, Category, TagPosts
 
 menu = [
     {'title': 'О сайте', 'url_name': 'about'},
@@ -71,6 +71,19 @@ def show_category(request, cat_slug):
             'menu': menu,
             'posts': posts,
             'cat_selected': category.pk}
+    return render(request, 'lesson_temp/index.html', context=data)
+
+def show_tag_posts_list(request, tag_slug):
+    tag = get_object_or_404(TagPosts, slug=tag_slug)
+    posts = tag.tags.filter(is_published=LessonForDB.Status.PUBLISHED)
+
+    data = {
+        'title': f"Тег: {tag.tag}",
+        'menu': menu,
+        'posts': posts,
+        'cat_selected': None,
+    }
+
     return render(request, 'lesson_temp/index.html', context=data)
 
 

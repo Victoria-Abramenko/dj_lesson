@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from debug_toolbar.toolbar import debug_toolbar_urls
 from django.conf.urls import handler404
 from django.contrib import admin
 from django.urls import path, include
@@ -24,10 +25,7 @@ from lesson_1.views import func_page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.index),
-    # path('lesson_1/', views.next_page),
-    # path('other/', views.other_page),
     path('', include('lesson_1.urls')),
-]
+] + debug_toolbar_urls()
 
 handler404 = func_page_not_found

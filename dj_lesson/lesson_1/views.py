@@ -14,18 +14,8 @@ menu = [
 ]
 
 
-data_db = [
-    {'id': 1, 'title': 'Анджелина Джоли', 'content': """<h2>Анджелина Джоли</h2> 
-    Здесь написана ее биография, Здесь написана ее биография, 
-    Здесь написана ее биография, Здесь написана ее биография, 
-    Здесь написана ее биография, Здесь написана ее биография""", 'is_published': True},
-    {'id': 2, 'title': 'Марго Робби', 'content': 'биография Марго Робби', 'is_published': False},
-    {'id': 3, 'title': 'Джулия Робертс', 'content': 'биография Джулии Робертс', 'is_published': True}
-]
-
-
 def index(request):
-    posts = LessonForDB.published.all()
+    posts = LessonForDB.published.all().select_related("cat")
     data = {'title': 'Главная страница сайта',
             'text': '',
             'menu': menu,
@@ -65,7 +55,7 @@ def login(request):
 
 def show_category(request, cat_slug):
     category = get_object_or_404(Category, slug=cat_slug)
-    posts = LessonForDB.published.filter(cat_id=category.pk)
+    posts = LessonForDB.published.filter(cat_id=category.pk).select_related("cat")
     data = {'title': f'Рубрика: {category.name}',
             'text': '',
             'menu': menu,
@@ -75,7 +65,7 @@ def show_category(request, cat_slug):
 
 def show_tag_posts_list(request, tag_slug):
     tag = get_object_or_404(TagPosts, slug=tag_slug)
-    posts = tag.tags.filter(is_published=LessonForDB.Status.PUBLISHED)
+    posts = tag.tags.filter(is_published=LessonForDB.Status.PUBLISHED).select_related("cat")
 
     data = {
         'title': f"Тег: {tag.tag}",

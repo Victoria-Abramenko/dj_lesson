@@ -29,3 +29,6 @@ urlpatterns = [
 ] + debug_toolbar_urls()
 
 handler404 = func_page_not_found
+
+admin.site.site_header = "Моя админка"
+admin.site.index_title = "Известные женщины мира"

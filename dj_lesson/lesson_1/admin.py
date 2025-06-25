@@ -1,6 +1,24 @@
 from django.contrib import admin, messages
 from .models import LessonForDB, Category
 
+class MarriedFilter(admin.SimpleListFilter):
+    title = "Статус женщин"
+    parameter_name = "status"
+
+
+    def lookups(self, request, model_admin):
+        return [
+            ("married", "Замужем"),
+            ("single", "Не замужем"),
+        ]
+
+
+    def queryset(self, request, queryset):
+        if self.value() == "married":
+            return queryset.filter(husband__isnull = False)
+        elif self.value() == "single":
+            return queryset.filter(husband__isnull = True)
+
 
 @admin.register(LessonForDB)
 class AppAdmin(admin.ModelAdmin):
@@ -10,6 +28,8 @@ class AppAdmin(admin.ModelAdmin):
     list_editable = ('is_published', )
     list_per_page = 5
     actions = ['set_published', 'set_draft']
+    search_fields = ['title', 'cat__name']
+    list_filter = [MarriedFilter, 'cat__name', 'is_published']
 
     @admin.display(description="Краткое описание", ordering='content')
     def show_info(self, obj_lesson = LessonForDB):
@@ -25,7 +45,7 @@ class AppAdmin(admin.ModelAdmin):
     @admin.action(description="Снять статью спубликации")
     def set_draft(self, request, queryset):
         count = queryset.update(is_published=LessonForDB.Status.DRAFT)
-        self.message_user(request, f"Изменено {count} записей", messages.Warning)
+        self.message_user(request, f"Изменено {count} записей", messages.WARNING)
 
 
 

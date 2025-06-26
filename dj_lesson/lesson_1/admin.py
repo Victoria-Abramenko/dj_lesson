@@ -22,8 +22,13 @@ class MarriedFilter(admin.SimpleListFilter):
 
 @admin.register(LessonForDB)
 class AppAdmin(admin.ModelAdmin):
+    fields = ['title', 'content', 'slug', 'cat', 'husband', 'tags']
+    # exclude = ['tags', 'is_published']
+    # readonly_fields = ['slug']
+    prepopulated_fields = {"slug": ("title", )}
     list_display = ('title', 'time_create', 'is_published', 'cat', "show_info")
     list_display_links = ('title', )
+    filter_horizontal = ['tags']
     ordering = ['time_create']
     list_editable = ('is_published', )
     list_per_page = 5

@@ -1,6 +1,20 @@
 from django.db import models
 from django.db.models import Model
+from django.template.defaultfilters import slugify
 from django.urls import reverse
+
+
+def translate_to_english(s: str) -> str:
+    dic = {'ь': '', 'ъ': '', 'а': 'a', 'б': 'b', 'в': 'v',
+           'г': 'g', 'д': 'd', 'е': 'e','ё': 'e', 'ж': 'zh',
+           'з': 'z', 'и': 'i', 'й': 'i', 'к': 'k', 'л': 'l',
+           'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r',
+           'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'kh',
+           'ц': 'tc', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch',
+           'ы': 'y', 'э': 'e', 'ю': 'iu', 'я': 'ia'}
+
+    return "".join(map(lambda x: dic[x] if dic.get(x, False) else x, s.lower()))
+
 
 
 class PublishedManager(models.Manager):
@@ -39,6 +53,11 @@ class LessonForDB(models.Model):
 
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_slug': self.slug})
+
+
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(translate_to_english(self.title))
+    #     super().save(*args, **kwargs)
 
 
 class Category(models.Model):

@@ -42,7 +42,7 @@ def show_post(request, post_slug):
 
 
 def add_page(request):
-    return HttpResponse(f"Добавление статьи")
+    return render(request, 'lesson_temp/addpage.html', {"menu": menu, "title": "Добавление статьи"})
 
 
 def contact(request):

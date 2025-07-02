@@ -46,11 +46,13 @@ def add_page(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST)
         if form.is_valid():
-            try:
-                LessonForDB.objects.create(**form.cleaned_data)
-            except:
-                form.add_error(None, "Ошибка при добавлении поста")
-                return redirect("home_page")
+            # try:
+            #     LessonForDB.objects.create(**form.cleaned_data)
+            # except:
+            #     form.add_error(None, "Ошибка при добавлении поста")
+            #     return redirect("home_page")
+            form.save()
+            return redirect("home_page")
     else:
         form = AddPostForm()
 

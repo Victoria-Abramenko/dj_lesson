@@ -42,4 +42,7 @@ class AddPostForm(forms.ModelForm):
             return title
 
 
+class UploadFileForm(forms.Form):
+    file = forms.FileField(label="Загрузить файл")
+
 

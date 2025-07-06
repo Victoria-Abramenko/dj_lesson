@@ -1,4 +1,6 @@
 from django.contrib import admin, messages
+from django.utils.safestring import mark_safe
+
 from .models import LessonForDB, Category
 
 class MarriedFilter(admin.SimpleListFilter):
@@ -22,11 +24,11 @@ class MarriedFilter(admin.SimpleListFilter):
 
 @admin.register(LessonForDB)
 class AppAdmin(admin.ModelAdmin):
-    fields = ['title', 'content', 'slug', 'cat', 'husband', 'tags']
+    fields = ['title', 'content', 'slug', 'photo', 'post_photo', 'cat', 'husband', 'tags']
     # exclude = ['tags', 'is_published']
-    # readonly_fields = ['slug']
+    readonly_fields = ['post_photo']
     prepopulated_fields = {"slug": ("title", )}
-    list_display = ('title', 'time_create', 'is_published', 'cat', "show_info")
+    list_display = ('title', 'post_photo', 'time_create', 'is_published', 'cat')
     list_display_links = ('title', )
     filter_horizontal = ['tags']
     ordering = ['time_create']
@@ -35,10 +37,14 @@ class AppAdmin(admin.ModelAdmin):
     actions = ['set_published', 'set_draft']
     search_fields = ['title', 'cat__name']
     list_filter = [MarriedFilter, 'cat__name', 'is_published']
+    save_on_top = True
 
-    @admin.display(description="Краткое описание", ordering='content')
-    def show_info(self, obj_lesson = LessonForDB):
-        return f" Описание {len(obj_lesson.content)} символов"
+    @admin.display(description="Фотография", ordering='content')
+    def post_photo(self, obj_lesson = LessonForDB):
+        if obj_lesson.photo:
+            return mark_safe(f"<img src='{obj_lesson.photo.url}' width=50>")
+        else:
+            return "без фото"
 
 
     @admin.action(description="Опубликовать статью")

@@ -15,6 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from debug_toolbar.toolbar import debug_toolbar_urls
+from django.conf.urls.static import static
+
+from dj_lesson import settings
 from django.conf.urls import handler404
 from django.contrib import admin
 from django.urls import path, include
@@ -27,6 +30,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lesson_1.urls')),
 ] + debug_toolbar_urls()
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = func_page_not_found
 

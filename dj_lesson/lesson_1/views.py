@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
+from django.views import View
+from django.views.generic import TemplateView
 
 from .forms import AddPostForm, UploadFileForm
 from .models import LessonForDB, Category, TagPosts, UploadFiles
@@ -15,14 +17,33 @@ menu = [
 ]
 
 
-def index(request):
-    posts = LessonForDB.published.all().select_related("cat")
-    data = {'title': 'Главная страница сайта',
-            'text': '',
-            'menu': menu,
-            'posts': posts,
-            'cat_selected': 0}
-    return render(request, 'lesson_temp/index.html', context=data)
+# def index(request):
+#     posts = LessonForDB.published.all().select_related("cat")
+#     data = {'title': 'Главная страница сайта',
+#             'text': '',
+#             'menu': menu,
+#             'posts': posts,
+#             'cat_selected': 0}
+#     return render(request, 'lesson_temp/index.html', context=data)
+
+
+class HomePage(TemplateView):
+    template_name = 'lesson_temp/index.html'
+    extra_context = {
+        'title': 'Главная страница сайта',
+        'text': '',
+        'menu': menu,
+        'posts': LessonForDB.published.all().select_related("cat"),
+        'cat_selected': 0
+    }
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'Главная страница сайта'
+    #     context['menu'] = menu
+    #     context['posts'] =  LessonForDB.published.all().select_related("cat")
+    #     context['cat_selected'] = int(self.request.GET.get('cat_id, 0'))
+    #     return context
 
 
 # def handle_uploaded_file(f):
@@ -56,26 +77,51 @@ def show_post(request, post_slug):
     return render(request, 'lesson_temp/post.html', data)
 
 
-def add_page(request):
-    if request.method == 'POST':
+# def add_page(request):
+#     if request.method == 'POST':
+#         form = AddPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             # try:
+#             #     LessonForDB.objects.create(**form.cleaned_data)
+#             # except:
+#             #     form.add_error(None, "Ошибка при добавлении поста")
+#             #     return redirect("home_page")
+#             form.save()
+#             return redirect("home_page")
+#     else:
+#         form = AddPostForm()
+#
+#     data = {
+#         "menu": menu,
+#         "title": "Добавление статьи",
+#         "form": form
+#     }
+#     return render(request, 'lesson_temp/addpage.html', data)
+
+
+class AddPage(View):
+    def get(self, request):
+        form = AddPostForm()
+        data = {
+            "menu": menu,
+            "title": "Добавление статьи",
+            "form": form
+        }
+        return render(request, 'lesson_temp/addpage.html', data)
+
+    def post(self, request):
         form = AddPostForm(request.POST, request.FILES)
         if form.is_valid():
-            # try:
-            #     LessonForDB.objects.create(**form.cleaned_data)
-            # except:
-            #     form.add_error(None, "Ошибка при добавлении поста")
-            #     return redirect("home_page")
             form.save()
             return redirect("home_page")
-    else:
-        form = AddPostForm()
 
-    data = {
-        "menu": menu,
-        "title": "Добавление статьи",
-        "form": form
-    }
-    return render(request, 'lesson_temp/addpage.html', data)
+        data = {
+            "menu": menu,
+            "title": "Добавление статьи",
+            "form": form
+        }
+        return render(request, 'lesson_temp/addpage.html', data)
+
 
 
 def contact(request):

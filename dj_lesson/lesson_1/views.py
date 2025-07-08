@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.template.defaultfilters import slugify
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 from .forms import AddPostForm, UploadFileForm
 from .models import LessonForDB, Category, TagPosts, UploadFiles
@@ -27,15 +27,32 @@ menu = [
 #     return render(request, 'lesson_temp/index.html', context=data)
 
 
-class HomePage(TemplateView):
+# class HomePage(TemplateView):
+#     template_name = 'lesson_temp/index.html'
+#     extra_context = {
+#         'title': 'Главная страница сайта',
+#         'text': '',
+#         'menu': menu,
+#         'posts': LessonForDB.published.all().select_related("cat"),
+#         'cat_selected': 0
+#     }
+
+
+class HomePage(ListView):
+    # model = LessonForDB
     template_name = 'lesson_temp/index.html'
+    context_object_name = 'posts'
     extra_context = {
         'title': 'Главная страница сайта',
         'text': '',
         'menu': menu,
-        'posts': LessonForDB.published.all().select_related("cat"),
         'cat_selected': 0
     }
+
+
+    def get_queryset(self):
+        return LessonForDB.published.all().select_related("cat")
+
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
@@ -132,15 +149,36 @@ def login(request):
     return HttpResponse(f"Авторизация")
 
 
-def show_category(request, cat_slug):
-    category = get_object_or_404(Category, slug=cat_slug)
-    posts = LessonForDB.published.filter(cat_id=category.pk).select_related("cat")
-    data = {'title': f'Рубрика: {category.name}',
-            'text': '',
-            'menu': menu,
-            'posts': posts,
-            'cat_selected': category.pk}
-    return render(request, 'lesson_temp/index.html', context=data)
+# def show_category(request, cat_slug):
+#     category = get_object_or_404(Category, slug=cat_slug)
+#     posts = LessonForDB.published.filter(cat_id=category.pk).select_related("cat")
+#     data = {'title': f'Рубрика: {category.name}',
+#             'text': '',
+#             'menu': menu,
+#             'posts': posts,
+#             'cat_selected': category.pk}
+#     return render(request, 'lesson_temp/index.html', context=data)
+
+
+class ShowCategory(ListView):
+    template_name = 'lesson_temp/index.html'
+    context_object_name = 'posts'
+    allow_empty = False
+
+    
+    def get_queryset(self):
+        return LessonForDB.published.filter(cat__slug=self.kwargs['cat_slug']).select_related("cat")
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cat = context['posts'][0].cat
+        context['title'] = 'Категория - ' + cat.name
+        context['menu'] = menu
+        context['cat_selected'] = cat.pk
+        return context
+
+
 
 def show_tag_posts_list(request, tag_slug):
     tag = get_object_or_404(TagPosts, slug=tag_slug)
@@ -154,6 +192,7 @@ def show_tag_posts_list(request, tag_slug):
     }
 
     return render(request, 'lesson_temp/index.html', context=data)
+
 
 
 def func_page_not_found(request, exception):

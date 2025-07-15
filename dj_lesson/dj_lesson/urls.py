@@ -29,7 +29,9 @@ from lesson_1.views import func_page_not_found
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lesson_1.urls')),
+    path('users/', include('users.urls', namespace="users")),
 ] + debug_toolbar_urls()
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

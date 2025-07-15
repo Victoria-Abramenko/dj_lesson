@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'lesson_1.apps.Lesson1Config',
+    'users.apps.UsersConfig',
     'debug_toolbar',
 ]
 

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Model
 from django.template.defaultfilters import slugify
@@ -38,6 +39,7 @@ class LessonForDB(models.Model):
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='posts', verbose_name="Категория")
     tags = models.ManyToManyField('TagPosts', blank=True, related_name='tags', verbose_name="Тег")
     husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='wife', verbose_name="Муж")
+    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='posts', null=True, default=None)
 
     objects = models.Manager()
     published = PublishedManager()

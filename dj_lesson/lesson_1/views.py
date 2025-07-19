@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -21,6 +23,7 @@ class HomePage(DataMixin, ListView):
     def get_queryset(self):
         return LessonForDB.published.all().select_related("cat")
 
+@login_required
 def about(request):
     contact_list = LessonForDB.published.all()
     paginator = Paginator(contact_list, 3)
@@ -44,10 +47,15 @@ class ShowPost(DataMixin, DetailView):
         return get_object_or_404(LessonForDB.published, slug=self.kwargs[self.slug_url_kwarg])
 
 
-class AddPage(DataMixin, CreateView):
+class AddPage(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddPostForm
     template_name = 'lesson_temp/addpage.html'
     title_page = 'Добавление статьи'
+
+    def form_valid(self, form):
+        w = form.save(commit=False)
+        w.author = self.request.user
+        return super().form_valid(form)
 
 
 class UpdatePage(DataMixin, UpdateView):
@@ -55,7 +63,7 @@ class UpdatePage(DataMixin, UpdateView):
     fields = ['title', 'content', 'photo', 'is_published', 'cat']
     template_name = 'lesson_temp/addpage.html'
     success_url = reverse_lazy('home_page')
-    title_page = 'Добавление статьи'
+    title_page = 'Редактирование статьи'
 
 def contact(request):
     return HttpResponse(f"Страница с контактами")

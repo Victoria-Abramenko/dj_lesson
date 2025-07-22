@@ -28,7 +28,7 @@ def about(request):
     contact_list = LessonForDB.published.all()
     paginator = Paginator(contact_list, 3)
 
-    page_number = request.Get.get('page')
+    page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'lesson_temp/about.html', {'title': 'О сайте', 'page_obj': page_obj})

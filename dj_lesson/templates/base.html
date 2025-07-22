@@ -21,8 +21,11 @@
 {% endfor %}
 {% if user.is_authenticated %}
 <!--	<li class="last">{{ user.username }} | <a href="{% url 'users:logout' %}">Выйти</a></li>-->
+
+
 	<form style="display:inline-block" method="post" action="{% url 'users:logout' %}">
 	{% csrf_token %}
+	<li class="last"><a href="{% url 'users:profile' %}">{{ user.username }}</a></li>
 	<button type="submit" class="last">Выйти</button></form>
 {% else %}
 	<li class="last"><a href="{% url 'users:login' %}">Войти</a> | <a href="{% url 'users:register' %}">Зарегистрироваться</a></li>
